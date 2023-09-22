@@ -7,6 +7,4 @@ workflows:
   build:
     jobs:
       - gradle/run:
-          command: lintKotlin
-      - gradle/run:
-          command: detekt
+          command: lintKotlin detekt
