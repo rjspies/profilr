@@ -6,12 +6,12 @@ orbs:
 executors:
   gradle_executor:
     docker:
-      - image: cimg/base:stable
+      - image: cimg/openjdk:15.0
     resource_class: small
 
 workflows:
   build:
     jobs:
       - gradle/run:
-          command: lintKotlin detekt
+          command: lintKotlin detekt --no-daemon --max-workers=1
           executor: gradle_executor
