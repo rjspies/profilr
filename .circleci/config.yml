@@ -3,18 +3,10 @@ version: 2.1
 orbs:
   gradle: circleci/gradle@3.0.0
 
-jobs:
+workflows:
   build:
-    docker:
-      - image: cimg/base:stable
-    steps:
-      - checkout
+    jobs:
       - gradle/run:
           command: lintKotlin
       - gradle/run:
           command: detekt
-
-workflows:
-  build:
-    jobs:
-      - build
