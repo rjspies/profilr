@@ -3,8 +3,15 @@ version: 2.1
 orbs:
   gradle: circleci/gradle@3.0.0
 
+executors:
+  gradle_executor:
+    docker:
+      - image: cimg/base:stable
+    resource_class: small
+
 workflows:
   build:
     jobs:
       - gradle/run:
-          command: lintKotlin detekt
+          command: lintKotlin detekt --no-daemon --max-workers=1
+          executor: gradle_executor
