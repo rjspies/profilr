@@ -7,11 +7,11 @@ executors:
   gradle_executor:
     docker:
       - image: cimg/base:stable
-    resource_class: small
+    resource_class: medium
 
 workflows:
   build:
     jobs:
       - gradle/run:
-          command: lintKotlin detekt --no-daemon --max-workers=1
+          command: lintKotlin detekt --no-daemon --max-workers=2
           executor: gradle_executor
