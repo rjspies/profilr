@@ -1,5 +1,6 @@
 plugins {
     kotlin("jvm") version "1.9.10"
+    id("org.jmailen.kotlinter") version "3.16.0"
 }
 
 group = "com.rjspies"
