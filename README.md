@@ -1,1 +1,1 @@
-[![CircleCI](https://dl.circleci.com/status-badge/img/circleci/L6X9MDg7uAjoz7MDy7WWvJ/AvvXonv86szLHuGPvZ2mFd/tree/main.svg?style=shield)](https://dl.circleci.com/status-badge/redirect/circleci/L6X9MDg7uAjoz7MDy7WWvJ/AvvXonv86szLHuGPvZ2mFd/tree/main)
+[![CircleCI](https://dl.circleci.com/status-badge/img/circleci/L6X9MDg7uAjoz7MDy7WWvJ/AvvXonv86szLHuGPvZ2mFd/tree/main.svg?style=shield&circle-token=ff798639d17b7c0afb0858ef3049d8b57965ddff)](https://dl.circleci.com/status-badge/redirect/circleci/L6X9MDg7uAjoz7MDy7WWvJ/AvvXonv86szLHuGPvZ2mFd/tree/main)
