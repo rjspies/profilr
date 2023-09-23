@@ -1,5 +1,5 @@
 plugins {
-    kotlin("jvm") version "1.9.10"
+    kotlin("multiplatform") version "1.9.10"
     id("org.jmailen.kotlinter") version "3.16.0"
     id("io.gitlab.arturbosch.detekt") version "1.23.1"
 }
@@ -11,14 +11,21 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-    testImplementation(kotlin("test"))
-}
-
-tasks.test {
-    useJUnitPlatform()
-}
-
 kotlin {
-    jvmToolchain(17)
+    macosX64("native") {
+        binaries {
+            executable("profilr") {
+                entryPoint = "main"
+            }
+        }
+    }
+
+    sourceSets {
+        getByName("nativeMain") {
+            dependencies {
+                implementation(kotlin("test"))
+                implementation("org.jetbrains.kotlinx:kotlinx-cli:0.3.6")
+            }
+        }
+    }
 }
