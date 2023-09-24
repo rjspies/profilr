@@ -25,6 +25,8 @@ kotlin {
             dependencies {
                 implementation(kotlin("test"))
                 implementation("org.jetbrains.kotlinx:kotlinx-cli:0.3.6")
+                implementation("com.mohamedrejeb.ksoup:ksoup-html:0.2.1")
+                implementation("com.squareup.okio:okio:3.5.0")
             }
         }
     }
