@@ -4,7 +4,6 @@ jobs:
   build:
     macos:
       xcode: 14.2.0
-    resource_class: small
     steps:
       - checkout
       - run:
@@ -16,7 +15,6 @@ jobs:
   release:
     macos:
       xcode: 14.2.0
-    resource_class: small
     steps:
       - checkout
       - run:
