@@ -2,8 +2,8 @@ version: 2.1
 
 jobs:
   build:
-    docker:
-      - image: cimg/openjdk:20.0
+    macos:
+      xcode: 15.0.0
     resource_class: small
     steps:
       - checkout
@@ -14,8 +14,8 @@ jobs:
       - run:
           command: ./gradlew nativeBinaries --no-daemon --max-workers=1
   release:
-    docker:
-      - image: cimg/openjdk:20.0
+    macos:
+      xcode: 15.0.0
     resource_class: small
     steps:
       - checkout
