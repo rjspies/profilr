@@ -3,22 +3,22 @@ version: 2.1
 jobs:
   build:
     macos:
-      xcode: 14.2.0
+      xcode: 15.0.0
     steps:
       - checkout
       - run:
-          command: ./gradlew lintKotlin --no-daemon --max-workers=1
+          command: ./gradlew lintKotlin --no-daemon --max-workers=4
       - run:
-          command: ./gradlew detekt --no-daemon --max-workers=1
+          command: ./gradlew detekt --no-daemon --max-workers=4
       - run:
-          command: ./gradlew nativeBinaries --no-daemon --max-workers=1
+          command: ./gradlew nativeBinaries --no-daemon --max-workers=4
   release:
     macos:
-      xcode: 14.2.0
+      xcode: 15.0.0
     steps:
       - checkout
       - run:
-          command: ./gradlew nativeMainBinaries --no-daemon --max-workers=1
+          command: ./gradlew nativeMainBinaries --no-daemon --max-workers=4
 
 workflows:
   build:
