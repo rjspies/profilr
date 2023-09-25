@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   build:
     macos:
-      xcode: 15.0.0
+      xcode: 14.2.0
     resource_class: small
     steps:
       - checkout
@@ -15,7 +15,7 @@ jobs:
           command: ./gradlew nativeBinaries --no-daemon --max-workers=1
   release:
     macos:
-      xcode: 15.0.0
+      xcode: 14.2.0
     resource_class: small
     steps:
       - checkout
