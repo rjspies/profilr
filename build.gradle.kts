@@ -1,11 +1,11 @@
 plugins {
-    kotlin("multiplatform") version "1.9.10"
-    id("org.jmailen.kotlinter") version "3.16.0"
-    id("io.gitlab.arturbosch.detekt") version "1.23.1"
+    alias(libs.plugins.kotlinMultiplatform)
+    alias(libs.plugins.kotlinter)
+    alias(libs.plugins.detekt)
 }
 
-group = "com.rjspies"
-version = "1.0-SNAPSHOT"
+group = libs.versions.groupName
+version = libs.versions.profilr
 
 repositories {
     mavenCentral()
@@ -23,11 +23,16 @@ kotlin {
     sourceSets {
         getByName("nativeMain") {
             dependencies {
-                implementation(kotlin("test"))
-                implementation("org.jetbrains.kotlinx:kotlinx-cli:0.3.6")
-                implementation("com.mohamedrejeb.ksoup:ksoup-html:0.2.1")
-                implementation("com.squareup.okio:okio:3.5.0")
+                implementation(libs.kotlinTest)
+                implementation(libs.kotlinxCli)
             }
         }
+    }
+}
+
+tasks.register("version") {
+    group = "versioning"
+    doLast {
+        println(libs.versions.profilr.get())
     }
 }

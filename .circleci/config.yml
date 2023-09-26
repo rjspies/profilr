@@ -7,10 +7,13 @@ jobs:
     steps:
       - checkout
       - run:
+          name: "Kotlinter"
           command: ./gradlew lintKotlin --no-daemon --max-workers=4
       - run:
+          name: "Detekt"
           command: ./gradlew detekt --no-daemon --max-workers=4
       - run:
+          name: "Build binary"
           command: ./gradlew nativeBinaries --no-daemon --max-workers=4
   release:
     macos:
@@ -18,7 +21,12 @@ jobs:
     steps:
       - checkout
       - run:
+          name: "Build binary"
           command: ./gradlew nativeMainBinaries --no-daemon --max-workers=4
+      - run:
+          name: "Print version"
+          command: ./gradlew version
+
 
 workflows:
   build:
@@ -26,4 +34,8 @@ workflows:
       - build
   release:
     jobs:
-      - release
+      - release:
+          filters:
+            branches:
+              only:
+                - main
