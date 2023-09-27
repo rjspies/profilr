@@ -1,24 +1,38 @@
 plugins {
-    kotlin("jvm") version "1.9.10"
-    id("org.jmailen.kotlinter") version "3.16.0"
-    id("io.gitlab.arturbosch.detekt") version "1.23.1"
+    alias(libs.plugins.kotlinMultiplatform)
+    alias(libs.plugins.kotlinter)
+    alias(libs.plugins.detekt)
 }
 
-group = "com.rjspies"
-version = "1.0-SNAPSHOT"
+group = libs.versions.groupName
+version = libs.versions.profilr
 
 repositories {
     mavenCentral()
 }
 
-dependencies {
-    testImplementation(kotlin("test"))
-}
-
-tasks.test {
-    useJUnitPlatform()
-}
-
 kotlin {
-    jvmToolchain(17)
+    macosX64("native") {
+        binaries {
+            executable("profilr") {
+                entryPoint = "main"
+            }
+        }
+    }
+
+    sourceSets {
+        getByName("nativeMain") {
+            dependencies {
+                implementation(libs.kotlinTest)
+                implementation(libs.kotlinxCli)
+            }
+        }
+    }
+}
+
+tasks.register("version") {
+    group = "versioning"
+    doLast {
+        println(libs.versions.profilr.get())
+    }
 }

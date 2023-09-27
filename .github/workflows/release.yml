@@ -1,0 +1,32 @@
+name: Release
+on:
+  workflow_dispatch:
+    branches: main
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: nativeMainBinaries
+
+      - name: Print version
+        uses: mathiasvr/command-output@v2.0.0
+        continue-on-error: true
+        id: version
+        with:
+          run: ./gradlew version
+
+      - name: Create release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ steps.version.outputs.stdout }}
+          name: ${{ steps.version.outputs.stdout }} 🎉
+          artifacts: "./build/bin/native/profilrReleaseExecutable/profilr.kexe"
+          artifactContentType: "kexe"
+          generateReleaseNotes: true
+          makeLatest: true
