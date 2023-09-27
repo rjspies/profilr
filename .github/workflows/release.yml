@@ -19,7 +19,7 @@ jobs:
         continue-on-error: true
         id: version
         with:
-          run: ./gradlew version
+          run: ./gradlew version -q
 
       - name: Create release
         uses: ncipollo/release-action@v1
