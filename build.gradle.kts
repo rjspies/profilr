@@ -33,6 +33,6 @@ kotlin {
 tasks.register("version") {
     group = "versioning"
     doLast {
-        println(libs.versions.profilr.get())
+        logger.quiet(libs.versions.profilr.get())
     }
 }
