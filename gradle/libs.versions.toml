@@ -1,7 +1,7 @@
 [versions]
 groupName = "com.rjspies"
 profilr = "0.1.0"
-kotlin = "1.9.22"
+kotlin = "2.0.21"
 
 [libraries]
 kotlinxCli = "org.jetbrains.kotlinx:kotlinx-cli:0.3.6"
